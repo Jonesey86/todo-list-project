@@ -31,18 +31,30 @@ class Program
                 Console.WriteLine("");
             }
 
-            Console.WriteLine("1. Add item");
-            Console.WriteLine("2. Delete item");
-            Console.WriteLine("3. Exit");
-            string? choiceRaw = Console.ReadLine();
             string? item = null;
 
-            if (choiceRaw == null)
+            while (choice != 1 && choice != 2 && choice != 3)
             {
-                continue;
-            }
+                Console.WriteLine("1. Add item");
+                Console.WriteLine("2. Delete item");
+                Console.WriteLine("3. Exit");
+                string? choiceRaw = Console.ReadLine();
 
-            choice = int.Parse(choiceRaw);
+                if (choiceRaw == null)
+                {
+                    continue;
+                }
+
+                try
+                {
+                    choice = int.Parse(choiceRaw);
+                }
+                catch (System.Exception)
+                {
+                    Console.WriteLine("-------------");
+                    Console.WriteLine("Use a number");
+                }
+            }
 
             if (choice == (int)UserChoice.AddItem)
             {
@@ -70,13 +82,14 @@ class Program
                     if (taskNum >= 0 && taskNum < toDoList.Count)
                     {
                         toDoList.RemoveAt(taskNum);
-                        Console.Clear();
+                        // Console.Clear();
+                        Console.WriteLine($"Deleted {item}");
                         Console.WriteLine("Task deleted successfully");
                         Console.WriteLine("");
                     }
                     else
                     {
-                        Console.Clear();
+                        // Console.Clear();
                         Console.WriteLine("Invalid task number.");
                         Console.WriteLine("");
                     }
