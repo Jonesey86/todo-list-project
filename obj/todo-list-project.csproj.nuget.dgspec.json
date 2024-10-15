@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ianro\\Desktop\\todo-list-project\\todo-list-project.csproj": {}
+    "C:\\Users\\hee08\\Desktop\\Kodehode\\Backend\\C#\\todo-list-project\\todo-list-project.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ianro\\Desktop\\todo-list-project\\todo-list-project.csproj": {
+    "C:\\Users\\hee08\\Desktop\\Kodehode\\Backend\\C#\\todo-list-project\\todo-list-project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ianro\\Desktop\\todo-list-project\\todo-list-project.csproj",
+        "projectUniqueName": "C:\\Users\\hee08\\Desktop\\Kodehode\\Backend\\C#\\todo-list-project\\todo-list-project.csproj",
         "projectName": "todo-list-project",
-        "projectPath": "C:\\Users\\ianro\\Desktop\\todo-list-project\\todo-list-project.csproj",
-        "packagesPath": "C:\\Users\\ianro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ianro\\Desktop\\todo-list-project\\obj\\",
+        "projectPath": "C:\\Users\\hee08\\Desktop\\Kodehode\\Backend\\C#\\todo-list-project\\todo-list-project.csproj",
+        "packagesPath": "C:\\Users\\hee08\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hee08\\Desktop\\Kodehode\\Backend\\C#\\todo-list-project\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ianro\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\hee08\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
