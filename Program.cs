@@ -69,29 +69,42 @@ class Program
             }
             else if (choice == (int)UserChoice.DeleteTask)
             {
-                if (toDoList.Count > 0)
+                int taskNum = 0;
+                bool taskNumInt = false;
+                while (taskNumInt == false)
                 {
-                    Console.WriteLine("Enter the number of the task you want to delete");
-                    for (int i = 0; i > toDoList.Count; i++)
+                    if (toDoList.Count > 0)
                     {
-                        Console.WriteLine("(" + (i + 1) + ")" + toDoList[i]);
-                    }
+                        Console.WriteLine("Enter the number of the task you want to delete");
+                        for (int i = 0; i > toDoList.Count; i++)
+                        {
+                            Console.WriteLine("(" + (i + 1) + ")" + toDoList[i]);
+                        }
 
-                    int taskNum = int.Parse(Console.ReadLine());
+                        try
+                        {
+                            taskNum = int.Parse(Console.ReadLine());
+                        }
+                        catch
+                        {
+                            continue;
+                        }
 
-                    if (taskNum >= 0 && taskNum < toDoList.Count)
-                    {
-                        toDoList.RemoveAt(taskNum);
-                        // Console.Clear();
-                        Console.WriteLine($"Deleted {item}");
-                        Console.WriteLine("Task deleted successfully");
-                        Console.WriteLine("");
-                    }
-                    else
-                    {
-                        // Console.Clear();
-                        Console.WriteLine("Invalid task number.");
-                        Console.WriteLine("");
+                        if (taskNum >= 0 && taskNum < toDoList.Count)
+                        {
+                            toDoList.RemoveAt(taskNum);
+                            // Console.Clear();
+                            Console.WriteLine($"Deleted {item}");
+                            Console.WriteLine("Task deleted successfully");
+                            Console.WriteLine("");
+                            taskNumInt = true;
+                        }
+                        else
+                        {
+                            // Console.Clear();
+                            Console.WriteLine("Invalid task number.");
+                            Console.WriteLine("");
+                        }
                     }
                 }
             }
