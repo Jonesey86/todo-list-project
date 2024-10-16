@@ -2,6 +2,7 @@
 
 class Program
 {
+    // Create choice menu
     enum UserChoice
     {
         AddItem = 1,
@@ -13,8 +14,10 @@ class Program
         List<string> toDoList = new List<string>();
         bool exit = false;
 
+        // Write list contents, repeat until exit option
         while (exit == false)
         {
+            // Write list unless emtpy
             int choice = 0;
             if (toDoList.Count > 0)
             {
@@ -25,14 +28,16 @@ class Program
                 }
                 Console.WriteLine("");
             }
+
+            // Write list if empty
             else if (toDoList.Count == 0)
             {
                 Console.WriteLine("Your list is empty");
                 Console.WriteLine("");
             }
 
+            // Input readline to choose menu options, run until menu chosen
             string? item = null;
-
             while (choice != 1 && choice != 2 && choice != 3)
             {
                 Console.WriteLine("1. Add item");
@@ -45,6 +50,7 @@ class Program
                     continue;
                 }
 
+                // Convert to int, if not write message
                 try
                 {
                     choice = int.Parse(choiceRaw);
@@ -56,6 +62,7 @@ class Program
                 }
             }
 
+            // Option to input item for list
             if (choice == (int)UserChoice.AddItem)
             {
                 Console.WriteLine("Enter item:");
@@ -67,6 +74,8 @@ class Program
                 Console.Clear();
                 Console.WriteLine("Item added successfully!");
             }
+
+            // Option to delete item from list
             else if (choice == (int)UserChoice.DeleteTask)
             {
                 int taskNum = 0;
@@ -90,6 +99,7 @@ class Program
                             continue;
                         }
 
+                        // Delete item if input matches list entry number
                         if (taskNum >= 0 && taskNum < toDoList.Count)
                         {
                             toDoList.RemoveAt(taskNum);
@@ -108,6 +118,8 @@ class Program
                     }
                 }
             }
+
+            // Choice to exit menu
             else if (choice == (int)UserChoice.Exit)
             {
                 exit = true;
