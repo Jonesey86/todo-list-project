@@ -2,6 +2,7 @@
 
 class Program
 {
+    // Create choice menu
     enum UserChoice
     {
         AddItem = 1,
@@ -13,8 +14,10 @@ class Program
         List<string> toDoList = new List<string>();
         bool exit = false;
 
+        // Write list contents, repeat until exit option
         while (exit == false)
         {
+            // Write list unless emtpy
             int choice = 0;
             if (toDoList.Count > 0)
             {
@@ -25,57 +28,98 @@ class Program
                 }
                 Console.WriteLine("");
             }
-            else if (choice == (int)UserChoice.DeleteTask)
-            {
-                if (toDoList.Count > 0)
-                {
-                    Console.WriteLine("Enter the number of the task you want to delete");
-                    for (int i = 0; i > toDoList.Count; i++)
-                    {
-                        Console.WriteLine("(" + (i + 1) + ")" + toDoList[i]);
-                    }
-                    int taskNum = int.Parse(Console.ReadLine());
 
-                    if (taskNum >= 0 && taskNum < toDoList.Count)
-                    {
-                        toDoList.RemoveAt(taskNum);
-                        Console.Clear();
-                        Console.WriteLine("Task deleted successfully");
-                        Console.WriteLine("");
-                    }
-                }
-            }
-            else
+            // Write list if empty
+            else if (toDoList.Count == 0)
             {
                 Console.WriteLine("Your list is empty");
                 Console.WriteLine("");
             }
 
-            Console.WriteLine("1. Add item");
-            Console.WriteLine("2. Delete item");
-            Console.WriteLine("3. Exit");
-            string? choiceRaw = Console.ReadLine();
+            // Input readline to choose menu options, run until menu chosen
             string? item = null;
-            Console.WriteLine("Enter item:");
-            item = Console.ReadLine();
-
-            if (choiceRaw == null)
+            while (choice != 1 && choice != 2 && choice != 3)
             {
-                continue;
+                Console.WriteLine("1. Add item");
+                Console.WriteLine("2. Delete item");
+                Console.WriteLine("3. Exit");
+                string? choiceRaw = Console.ReadLine();
+
+                if (choiceRaw == null)
+                {
+                    continue;
+                }
+
+                // Convert to int, if not write message
+                try
+                {
+                    choice = int.Parse(choiceRaw);
+                }
+                catch (System.Exception)
+                {
+                    Console.WriteLine("-------------");
+                    Console.WriteLine("Use a number");
+                }
             }
 
-            choice = int.Parse(choiceRaw);
-
-            if (choice != (int)UserChoice.AddItem || item == null)
+            // Option to input item for list
+            if (choice == (int)UserChoice.AddItem)
             {
-                continue;
-            }
-            else if (choice == (int)UserChoice.AddItem)
-            {
-                toDoList.Add(item);
+                Console.WriteLine("Enter item:");
+                item = Console.ReadLine();
+                if (item != null)
+                {
+                    toDoList.Add(item);
+                }
                 Console.Clear();
                 Console.WriteLine("Item added successfully!");
             }
+
+            // Option to delete item from list
+            else if (choice == (int)UserChoice.DeleteTask)
+            {
+                int taskNum = 0;
+                bool taskNumInt = false;
+                while (taskNumInt == false)
+                {
+                    if (toDoList.Count > 0)
+                    {
+                        Console.WriteLine("Enter the number of the task you want to delete");
+                        for (int i = 0; i > toDoList.Count; i++)
+                        {
+                            Console.WriteLine("(" + (i + 1) + ")" + toDoList[i]);
+                        }
+
+                        try
+                        {
+                            taskNum = int.Parse(Console.ReadLine());
+                        }
+                        catch
+                        {
+                            continue;
+                        }
+
+                        // Delete item if input matches list entry number
+                        if (taskNum >= 0 && taskNum < toDoList.Count)
+                        {
+                            toDoList.RemoveAt(taskNum);
+                            // Console.Clear();
+                            Console.WriteLine($"Deleted {item}");
+                            Console.WriteLine("Task deleted successfully");
+                            Console.WriteLine("");
+                            taskNumInt = true;
+                        }
+                        else
+                        {
+                            // Console.Clear();
+                            Console.WriteLine("Invalid task number.");
+                            Console.WriteLine("");
+                        }
+                    }
+                }
+            }
+
+            // Choice to exit menu
             else if (choice == (int)UserChoice.Exit)
             {
                 exit = true;
