@@ -57,8 +57,16 @@ class Program
                 }
                 catch (System.Exception)
                 {
+                    Console.Clear();
+                    Console.WriteLine("To-do List:");
+                    for (int i = 0; i < toDoList.Count; i++)
+                    {
+                        Console.WriteLine("- " + toDoList[i]);
+                    }
+                    Console.WriteLine("");
                     Console.WriteLine("-------------");
                     Console.WriteLine("Use a number");
+                    Console.WriteLine("-------------");
                 }
             }
 
@@ -84,12 +92,12 @@ class Program
                 {
                     if (toDoList.Count > 0)
                     {
+                        Console.Clear();
                         Console.WriteLine("Enter the number of the task you want to delete");
-                        for (int i = 0; i > toDoList.Count; i++)
+                        for (int i = 0; i < toDoList.Count; i++)
                         {
                             Console.WriteLine("(" + (i + 1) + ")" + toDoList[i]);
                         }
-
                         try
                         {
                             taskNum = int.Parse(Console.ReadLine());
@@ -102,7 +110,7 @@ class Program
                         // Delete item if input matches list entry number
                         if (taskNum >= 0 && taskNum < toDoList.Count)
                         {
-                            toDoList.RemoveAt(taskNum);
+                            toDoList.RemoveAt(taskNum - 1);
                             // Console.Clear();
                             Console.WriteLine($"Deleted {item}");
                             Console.WriteLine("Task deleted successfully");
@@ -111,7 +119,11 @@ class Program
                         }
                         else
                         {
-                            // Console.Clear();
+                            Console.Clear();
+                            // for (int i = 0; i < toDoList.Count; i++)
+                            // {
+                            //     Console.WriteLine("(" + (i + 1) + ")" + toDoList[i]);
+                            // }
                             Console.WriteLine("Invalid task number.");
                             Console.WriteLine("");
                         }
